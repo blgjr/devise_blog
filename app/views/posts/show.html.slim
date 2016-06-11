@@ -1,0 +1,14 @@
+h2
+  = @post.title
+p
+  = @post.text
+p
+  strong Автор:
+  = @post.user.email
+- if user_signed_in?
+  = link_to 'Редактировать', edit_post_path(@post)
+  ||
+  = link_to 'Назад', posts_path
+-else
+  = link_to 'Назад', posts_path
+

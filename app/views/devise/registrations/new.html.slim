@@ -1,0 +1,21 @@
+h2 Регистрация
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :email, 'Почта'
+    br/
+    = f.email_field :email, autofocus: true
+  .field
+    = f.label :password, 'Пароль'
+    - if @minimum_password_length
+      em
+        | (#{@minimum_password_length} минимум символов)
+    br/
+    = f.password_field :password, autocomplete: "off"
+  .field
+    = f.label :password_confirmation, 'Повторите пароль'
+    br/
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .actions
+    = f.submit "Зарегистрироваться", class: 'btn btn-primary'
+= render "devise/shared/links"

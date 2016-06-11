@@ -1,0 +1,20 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    #error_explanation
+      h2
+        = "#{pluralize(@post.errors.count, "error")}"
+      ul
+        - @post.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title, 'Заголовок'
+    br
+    = f.text_field :title, class: 'input'
+  .field
+    = f.label :text, 'Текст'
+    br
+    = f.text_area :text, class: 'textarea'
+
+  .actions
+     = f.submit 'Запостить', class: 'btn btn-default'
