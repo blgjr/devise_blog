@@ -1,5 +1,7 @@
-h1 Новый пост
+.form.form--posts
+	h1 Новый пост
 
-= render 'form'
-
-= link_to 'Назад', posts_path
+	= render 'form'
+	br
+	br
+	= link_to 'Назад', posts_path, class: 'button'

@@ -1,17 +1,19 @@
-h2 Вход
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email, 'Почта'
-    br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password, 'Пароль'
-    br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me, 'Запомнить меня'
-  .actions
-    = f.submit "Войти", class: 'btn btn-success'
-= render "devise/shared/links"
+.form
+  h2.form__title Вход
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form__field
+      = f.email_field :email, autofocus: true, placeholder: 'Почта', class: 'form__input form__input-icon form__input--email'
+
+    .form__field
+      = f.password_field :password, autocomplete: "off", placeholder: 'Пароль', class: 'form__input form__input-icon form__input--pass'
+
+    - if devise_mapping.rememberable?
+      .form__field
+        = f.check_box :remember_me
+        = f.label :remember_me, 'Запомнить меня'
+    .form__submit
+      = f.submit "Войти", class: 'form__submit-button'
+      .form__submit-ease
+  br
+  br
+  = render "devise/shared/links"

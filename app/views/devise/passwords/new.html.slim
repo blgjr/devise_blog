@@ -1,11 +1,15 @@
-h2 Забыли пароль?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email, 'Почта'
-    br/
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit "Отправьте мне интсрукции сброса пароля", class: 'btn btn-info'
-= render "devise/shared/links"
+.form
+  h2.form__title Забыли пароль?
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = devise_error_messages!
+    .form__field
+      = f.email_field :email, autofocus: true, placeholder: 'Почта', class: 'form__input form__input-icon form__input--email'
+
+    .form__submit
+      i инструкция сброса пароля
+      = f.submit "Отправить", class: 'form__submit-button'
+      .form__submit-ease
+  br
+  br
+  = render "devise/shared/links"
 

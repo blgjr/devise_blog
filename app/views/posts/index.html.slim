@@ -1,26 +1,16 @@
-h1 Список постов
-/ - if user_signed_in?
+.posts 
 
-= link_to 'Новый пост', new_post_path
+  = link_to 'Новый пост', new_post_path, class: 'button'
 
-/ - else
-/   = link_to 'Зарегистрируйтесь, чтобы постить', new_user_registration_path
-/   br
-/   = link_to 'Или войдите в свой аккаунт, чтобы постить', new_user_session_path
+  - @posts.each do |post|
+    h1.posts__title = post.title
+    p.posts__text = post.text
+    .posts__user
+      strong Автор: 
+      = post.user.email
 
-
-- @posts.each do |post|
-  h1 = post.title
-  p = post.text
-  div
-    strong Автор: 
-    = post.user.email
-  - if user_signed_in?
-    = link_to 'Показать', post_path(post)
-    = link_to 'Редактировать', edit_post_path(post)
-    = link_to 'Удалить', post_path(post), method: :delete, data: { confirm: 'Вы уверены?' }
-  - else
-    = link_to 'Показать', post_path(post)
+    = link_to 'Показать', post_path(post), class: 'button'
+  
 
 
 

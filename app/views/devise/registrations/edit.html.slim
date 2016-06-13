@@ -1,36 +1,32 @@
-h2
-  | Изменить профиль #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email, 'Почта'
-    br/
-    = f.email_field :email, autofocus: true
+.form
+  h2.form__title
+    | Изменить профиль #{resource_name.to_s.humanize}
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = devise_error_messages!
+    .form__field
+      = f.email_field :email, autofocus: true, class: 'form__input form__input-icon form__input--email'
 
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for: #{resource.unconfirmed_email}
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      div
+        | Currently waiting confirmation for: #{resource.unconfirmed_email}
 
-  .field
-    = f.label :password, 'Пароль'
-    br
-    i оставьте пустым, если не хотите изменить его
-    br
-    = f.password_field :password, autocomplete: "off"
+    .form__field
+      i оставьте пустым, если не хотите изменить его
+      br
+      = f.password_field :password, autocomplete: "off", placeholder: 'Пароль', class: 'form__input form__input-icon form__input--new-pass'
 
-  .field
-    = f.label :password_confirmation, 'Подтверждение пароля'
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
+    .form__field
+      = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Подтверждение пороля', class: 'form__input form__input-icon form__input--confirm-pass'
 
-  .field
-    = f.label :current_password, 'Текущий пароль'
+    .form__field
+      i нам нужен текущий пароль для подтверждения изменений
+      br
+      = f.password_field :current_password, autocomplete: "off", placeholder: 'Текущий пароль', class: 'form__input form__input-icon form__input--pass'
     br
-    i нам нужен текущий пароль для подтверждения изменений
-    br
-    = f.password_field :current_password, autocomplete: "off"
+    .form__submit
+      = f.submit "Обновить", class: 'form__submit-button'
+      .form__submit-ease
+
   br
-  .actions
-    = f.submit "Обновить", class: 'btn btn-default'
-
-= link_to "Назад", :back
+  br
+  = link_to "Назад", :back, class: 'button'

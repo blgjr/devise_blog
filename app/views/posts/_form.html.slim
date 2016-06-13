@@ -7,14 +7,12 @@
         - @post.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :title, 'Заголовок'
-    br
-    = f.text_field :title, class: 'input'
-  .field
-    = f.label :text, 'Текст'
-    br
-    = f.text_area :text, class: 'textarea'
+  .form__field
+    = f.text_field :title, class: 'form__input form__input-icon form__input--title', placeholder: 'Заголовок'
 
-  .actions
-     = f.submit 'Запостить', class: 'btn btn-default'
+  .form__field
+    = f.text_area :text, class: 'form__input form__input-icon form__input--text', placeholder: 'Текст'
+
+  .form__submit
+     = f.submit 'Запостить', class: 'form__submit-button'
+     .form__submit-ease

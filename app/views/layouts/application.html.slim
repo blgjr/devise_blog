@@ -5,27 +5,36 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'
   body
-    nav.navbar.navbar-inverse
+    nav.navbar.navbar-default.navbar-static-top
       .container
-        .navbar-header
-          = link_to 'Блог', root_path, class: 'navbar-brand'
-        #navbar
-          
-          ul.nav.navbar-nav.pull-right
-            - if user_signed_in?
+        .row
+          .col-md-6.col-sm-6.col-xs-6
+            .nav.navbar-nav
+              li= link_to 'Главная', root_path, class: 'navbar-brand'
+              li= link_to 'Блог', posts_path, class: 'navbar-brand'
+          .col-md-6.col-sm-6.col-xs-6
 
-              li= link_to 'Изменить данные', edit_user_registration_path
+            
+            ul.nav.navbar-nav.pull-right
+              - if user_signed_in?
 
-              li= link_to 'Выйти', destroy_user_session_path, method: :delete
+                li= link_to 'Изменить профиль', edit_user_registration_path
 
-            - else
+                li= link_to 'Выйти', destroy_user_session_path, method: :delete
 
-              li= link_to 'Зарегистрироваться', new_user_registration_path
+              - else
 
-              li= link_to 'Войти', new_user_session_path
+                li= link_to 'Зарегистрироваться', new_user_registration_path
+
+                li= link_to 'Войти', new_user_session_path
 
 
     .container
+      
    
       = yield
+
+    / footer.footer
+    /   span &copy 2016
