@@ -14,5 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap/dropdown
+$( document ).ready(function() {
+
+  $('.dropdown-toggle').dropdown()
+
+});
 
 

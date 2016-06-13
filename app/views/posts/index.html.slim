@@ -4,13 +4,16 @@
 
   - @posts.each do |post|
     h1.posts__title = post.title
+
     p.posts__text = post.text
+
     .posts__user
       strong Автор: 
       = post.user.email
 
-    = link_to 'Показать', post_path(post), class: 'button'
-  
+
+    = link_to 'Читать', post_path(post), class: 'button'
+
 
 
 
